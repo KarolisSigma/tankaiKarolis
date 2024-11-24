@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -76,6 +77,15 @@ public class PlayerScript : MonoBehaviour
             healthbar.TakeDamage(-10);
             Destroy(collision.gameObject);
         }
+    }
+
+    public void GameOver() {
+        int player = 2;
+        if (player1) { 
+            player= 1;
+        }
+        PlayerPrefs.SetInt("winner", player);
+        SceneManager.LoadScene("GameOver");
     }
 
 }
